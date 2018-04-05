@@ -14,5 +14,10 @@ namespace ex_0405 {
         {
             InitializeComponent();
         }
+
+        private void button_Click(object sender, EventArgs e)
+        {
+            displayLabel.Text = "Clicked !!";
+        }
     }
 }
