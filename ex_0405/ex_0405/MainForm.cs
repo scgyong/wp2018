@@ -18,6 +18,7 @@ namespace ex_0405 {
         private void button_Click(object sender, EventArgs e)
         {
             displayLabel.Text = "Clicked !!";
+            displayLabel.BorderStyle = BorderStyle.Fixed3D;
         }
     }
 }
