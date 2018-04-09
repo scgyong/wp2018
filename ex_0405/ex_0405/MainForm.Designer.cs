@@ -27,6 +27,7 @@
         {
             this.displayLabel = new System.Windows.Forms.Label();
             this.button = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // displayLabel
@@ -48,15 +49,26 @@
             this.button.UseVisualStyleBackColor = true;
             this.button.Click += new System.EventHandler(this.button_Click);
             // 
+            // closeButton
+            // 
+            this.closeButton.Location = new System.Drawing.Point(275, 79);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(155, 83);
+            this.closeButton.TabIndex = 2;
+            this.closeButton.Text = "Close This Window !!";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 379);
+            this.ClientSize = new System.Drawing.Size(559, 379);
+            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.button);
             this.Controls.Add(this.displayLabel);
             this.Name = "MainForm";
-            this.Text = "Hello World";
+            this.Text = "Hello Windows";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -66,6 +78,7 @@
 
         private System.Windows.Forms.Label displayLabel;
         private System.Windows.Forms.Button button;
+        private System.Windows.Forms.Button closeButton;
     }
 }
 

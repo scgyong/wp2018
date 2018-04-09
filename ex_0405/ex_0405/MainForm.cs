@@ -20,5 +20,10 @@ namespace ex_0405 {
             displayLabel.Text = "Clicked !!";
             displayLabel.BorderStyle = BorderStyle.Fixed3D;
         }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
