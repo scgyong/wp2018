@@ -28,7 +28,7 @@ namespace ex_0405 {
 
         private void MainForm_Activated(object sender, EventArgs e)
         {
-            displayLabel.Text = "Activated!!";
+            displayLabel.Text = "수정 Activated!!";
         }
 
         private void MainForm_Deactivate(object sender, EventArgs e)
