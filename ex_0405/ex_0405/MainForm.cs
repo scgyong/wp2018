@@ -25,5 +25,15 @@ namespace ex_0405 {
         {
             this.Close();
         }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            displayLabel.Text = "Activated!!";
+        }
+
+        private void MainForm_Deactivate(object sender, EventArgs e)
+        {
+            displayLabel.Text = "Deactivated!!";
+        }
     }
 }

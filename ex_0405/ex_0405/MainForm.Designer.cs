@@ -69,6 +69,8 @@
             this.Controls.Add(this.displayLabel);
             this.Name = "MainForm";
             this.Text = "Hello Windows";
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
+            this.Deactivate += new System.EventHandler(this.MainForm_Deactivate);
             this.ResumeLayout(false);
             this.PerformLayout();
 
