@@ -34,5 +34,17 @@ namespace ex_0412 {
 
             listBox.Items.RemoveAt(index);
         }
+
+        private void inputTextBox_TextChanged(object sender, EventArgs e)
+        {
+            bool enablesButton = inputTextBox.Text != "";
+            addButton.Enabled = enablesButton;
+        }
+
+        private void listBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            bool enablesButton = listBox.SelectedIndex >= 0;
+            removeButton.Enabled = enablesButton;
+        }
     }
 }

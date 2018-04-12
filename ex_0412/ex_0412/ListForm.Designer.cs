@@ -37,6 +37,7 @@
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.Size = new System.Drawing.Size(100, 21);
             this.inputTextBox.TabIndex = 0;
+            this.inputTextBox.TextChanged += new System.EventHandler(this.inputTextBox_TextChanged);
             // 
             // addButton
             // 
@@ -56,6 +57,7 @@
             this.listBox.Name = "listBox";
             this.listBox.Size = new System.Drawing.Size(120, 88);
             this.listBox.TabIndex = 2;
+            this.listBox.SelectedValueChanged += new System.EventHandler(this.listBox_SelectedValueChanged);
             // 
             // removeButton
             // 
