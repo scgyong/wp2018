@@ -14,5 +14,21 @@ namespace ex_0412 {
         {
             InitializeComponent();
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            string text = inputTextBox.Text;
+            listBox.Items.Add(text);
+        }
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            int index = listBox.SelectedIndex;
+            if (index < 0) {
+                return;
+            }
+
+            listBox.Items.RemoveAt(index);
+        }
     }
 }
