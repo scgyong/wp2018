@@ -14,5 +14,11 @@ namespace ex_0412 {
         {
             InitializeComponent();
         }
+
+        private void fruitRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton r = sender as RadioButton;
+            displayLabel.Text = "Selected: " + r.Text;
+        }
     }
 }
