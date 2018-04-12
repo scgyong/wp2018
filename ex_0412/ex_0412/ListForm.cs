@@ -18,7 +18,11 @@ namespace ex_0412 {
         private void addButton_Click(object sender, EventArgs e)
         {
             string text = inputTextBox.Text;
+            if (text == "") {
+                return;
+            }
             listBox.Items.Add(text);
+            inputTextBox.Text = "";
         }
 
         private void removeButton_Click(object sender, EventArgs e)
