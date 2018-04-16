@@ -30,8 +30,24 @@ namespace Game2048 {
             generateRandomNumber();
         }
 
+        private bool isFull()
+        {
+            for (int y = 0; y < 4; y++) {
+                for (int x = 0; x < 4; x++) {
+                    int value;
+                    if (!Int32.TryParse(board[y, x].Text, out value)) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         private void generateRandomNumber()
         {
+            if (isFull()) {
+                return;
+            }
+
             int x, y, value;
             while (true) {
                 x = random.Next(4);
