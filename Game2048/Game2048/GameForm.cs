@@ -32,9 +32,15 @@ namespace Game2048 {
 
         private void generateRandomNumber()
         {
-            int x = random.Next(4);
-            int y = random.Next(4);
-            int value = (random.Next(2) == 0) ? 2 : 4;
+            int x, y, value;
+            while (true) {
+                x = random.Next(4);
+                y = random.Next(4);
+                if (!Int32.TryParse(board[y, x].Text, out value)) {
+                    break;
+                }
+            }
+            value = (random.Next(2) == 0) ? 2 : 4;
             board[y, x].Text = value.ToString();
         }
 
