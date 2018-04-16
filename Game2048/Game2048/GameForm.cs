@@ -11,6 +11,8 @@ using System.Windows.Forms;
 namespace Game2048 {
     public partial class GameForm : Form {
         Label[,] board = new Label[4, 4];
+        Random random = new Random();
+
         public GameForm()
         {
             InitializeComponent();
@@ -20,6 +22,20 @@ namespace Game2048 {
                 { label5, label6, label7, label8 },
                 { label1, label2, label3, label4 },
             };
+
+            foreach (Label label in board) {
+                label.Text = ".";
+            }
+
+            generateRandomNumber();
+        }
+
+        private void generateRandomNumber()
+        {
+            int x = random.Next(4);
+            int y = random.Next(4);
+            int value = (random.Next(2) == 0) ? 2 : 4;
+            board[y, x].Text = value.ToString();
         }
 
         int x = 0, y = 0;
@@ -33,39 +49,23 @@ namespace Game2048 {
 
         private void leftButton_Click(object sender, EventArgs e)
         {
-            if (x > 0) {
-                x--;
-                board[y, x].Text = score.ToString();
-            }
+            generateRandomNumber();
             increaseScore(-1);
         }
 
         private void rightButton_Click(object sender, EventArgs e)
         {
-            if (x < 3) {
-                x++;
-                board[y, x].Text = score.ToString();
-            }
             increaseScore(1);
         }
 
         private void upButton_Click(object sender, EventArgs e)
         {
-            if (y > 0) {
-                y--;
-                board[y, x].Text = score.ToString();
-            }
             increaseScore(10);
         }
 
         private void downButton_Click(object sender, EventArgs e)
         {
-            if (y < 3) {
-                y++;
-                board[y, x].Text = score.ToString();
-            }
             increaseScore(-10);
-
         }
     }
 }
