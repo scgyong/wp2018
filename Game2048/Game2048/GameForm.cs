@@ -87,16 +87,34 @@ namespace Game2048 {
                 }
             }
         }
+        private void moveRight()
+        {
+            for (int y = 0; y < 4; y++) {
+                for (int x = 3; x >= 0; x--) {
+                    if (board[y, x].Text.Length > 0) {
+                        continue;
+                    }
+                    for (int x2 = x - 1; x2 >= 0; x2--) {
+                        if (board[y, x2].Text.Length > 0) {
+                            System.Diagnostics.Debug.WriteLine(y + ": " + x2 + "->" + x);
+                            board[y, x].Text = board[y, x2].Text;
+                            board[y, x2].Text = "";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
         private void leftButton_Click(object sender, EventArgs e)
         {
             moveLeft();
             generateRandomNumber();
-            //increaseScore(-1);
         }
 
         private void rightButton_Click(object sender, EventArgs e)
         {
-            increaseScore(1);
+            moveRight();
+            generateRandomNumber();
         }
 
         private void upButton_Click(object sender, EventArgs e)
