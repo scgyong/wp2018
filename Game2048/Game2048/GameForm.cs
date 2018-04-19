@@ -24,7 +24,7 @@ namespace Game2048 {
             };
 
             foreach (Label label in board) {
-                label.Text = ".";
+                label.Text = "";
             }
 
             generateRandomNumber();
@@ -69,10 +69,29 @@ namespace Game2048 {
             scoreLabel.Text = score.ToString();
         }
 
+        private void moveLeft()
+        {
+            for (int y = 0; y < 4; y++) {
+                for (int x = 0; x < 4; x++) {
+                    if (board[y, x].Text.Length > 0) {
+                        continue;
+                    }
+                    for (int x2 = x + 1; x2 < 4; x2++) {
+                        if (board[y, x2].Text.Length > 0) {
+                            System.Diagnostics.Debug.WriteLine(y + ": " + x2 + "->" + x);
+                            board[y, x].Text = board[y, x2].Text;
+                            board[y, x2].Text = "";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
         private void leftButton_Click(object sender, EventArgs e)
         {
+            moveLeft();
             generateRandomNumber();
-            increaseScore(-1);
+            //increaseScore(-1);
         }
 
         private void rightButton_Click(object sender, EventArgs e)
