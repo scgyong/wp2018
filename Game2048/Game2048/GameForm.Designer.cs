@@ -302,6 +302,7 @@
             this.Controls.Add(this.leftButton);
             this.Name = "GameForm";
             this.Text = "2048";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

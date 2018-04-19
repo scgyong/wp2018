@@ -144,5 +144,25 @@ namespace Game2048 {
         {
             increaseScore(-10);
         }
+
+        private void GameForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode) {
+            case Keys.Left:
+                moveLeft();
+                break;
+            case Keys.Right:
+                moveRight();
+                break;
+            case Keys.Up:
+                //moveUp();
+                break;
+            case Keys.Down:
+                //moveDown();
+                break;
+            default:
+                break;
+            }
+        }
     }
 }
