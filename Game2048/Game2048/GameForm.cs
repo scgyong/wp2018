@@ -79,8 +79,43 @@ namespace Game2048 {
         }
         private void set(int x, int y, int value)
         {
+            Label label = board[y, x];
             string str = value != 0 ? value.ToString() : "";
-            board[y, x].Text = str;
+            label.Text = str;
+
+            // color
+            int colorIndex = 0;
+            int n = value;
+            while (n >= 1) {
+                n /= 2;
+                colorIndex++;
+            }
+
+            Color[] colors = new Color[] {
+                Color.Transparent,
+                Color.Wheat,
+                Color.Black,
+                Color.LightGray,
+                Color.Gray,
+                Color.LightGreen,
+                Color.Green,
+                Color.Pink,
+                Color.SkyBlue,
+                Color.Blue,
+                Color.Orange,
+                Color.Red,
+                Color.Black,
+            };
+
+            if (colorIndex >= colors.Length) {
+                colorIndex = colors.Length - 1;
+            }
+            Color color = colors[colorIndex];
+            label.BackColor = color;
+            int gray = color.R * 299 + color.G * 587 + color.B * 114;
+            label.ForeColor = gray > 127000 ? Color.Black : Color.White;
+
+
         }
         private delegate void Translator(int x, int y, out int ox, out int oy);
         private bool move(Translator translator)
