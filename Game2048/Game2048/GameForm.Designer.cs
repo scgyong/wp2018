@@ -47,7 +47,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.GreenYellow;
-            this.label1.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(10, 380);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 100);
@@ -58,7 +58,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.GreenYellow;
-            this.label2.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(120, 380);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 100);
@@ -69,7 +69,7 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.GreenYellow;
-            this.label3.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(230, 380);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 100);
@@ -80,7 +80,7 @@
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.GreenYellow;
-            this.label4.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(340, 380);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 100);
@@ -91,7 +91,7 @@
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.GreenYellow;
-            this.label5.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(10, 270);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 100);
@@ -102,7 +102,7 @@
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.GreenYellow;
-            this.label6.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(120, 270);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 100);
@@ -113,7 +113,7 @@
             // label7
             // 
             this.label7.BackColor = System.Drawing.Color.GreenYellow;
-            this.label7.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(230, 270);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 100);
@@ -124,7 +124,7 @@
             // label8
             // 
             this.label8.BackColor = System.Drawing.Color.GreenYellow;
-            this.label8.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(340, 270);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 100);
@@ -135,7 +135,7 @@
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.GreenYellow;
-            this.label9.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(10, 160);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 100);
@@ -146,7 +146,7 @@
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.GreenYellow;
-            this.label10.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(120, 160);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 100);
@@ -157,7 +157,7 @@
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.GreenYellow;
-            this.label11.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(230, 160);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(100, 100);
@@ -168,7 +168,7 @@
             // label12
             // 
             this.label12.BackColor = System.Drawing.Color.GreenYellow;
-            this.label12.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(340, 160);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(100, 100);
@@ -179,7 +179,7 @@
             // label13
             // 
             this.label13.BackColor = System.Drawing.Color.GreenYellow;
-            this.label13.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(10, 50);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(100, 100);
@@ -190,7 +190,7 @@
             // label14
             // 
             this.label14.BackColor = System.Drawing.Color.GreenYellow;
-            this.label14.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(120, 50);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(100, 100);
@@ -201,7 +201,7 @@
             // label15
             // 
             this.label15.BackColor = System.Drawing.Color.GreenYellow;
-            this.label15.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(230, 50);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(100, 100);
@@ -212,7 +212,7 @@
             // label16
             // 
             this.label16.BackColor = System.Drawing.Color.GreenYellow;
-            this.label16.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(340, 50);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(100, 100);
