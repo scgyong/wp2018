@@ -25,10 +25,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.leftButton = new System.Windows.Forms.Button();
-            this.upButton = new System.Windows.Forms.Button();
-            this.downButton = new System.Windows.Forms.Button();
-            this.rightButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,46 +43,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.scoreLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // leftButton
-            // 
-            this.leftButton.Location = new System.Drawing.Point(13, 555);
-            this.leftButton.Name = "leftButton";
-            this.leftButton.Size = new System.Drawing.Size(75, 23);
-            this.leftButton.TabIndex = 0;
-            this.leftButton.Text = "Left";
-            this.leftButton.UseVisualStyleBackColor = true;
-            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
-            // 
-            // upButton
-            // 
-            this.upButton.Location = new System.Drawing.Point(94, 541);
-            this.upButton.Name = "upButton";
-            this.upButton.Size = new System.Drawing.Size(75, 23);
-            this.upButton.TabIndex = 0;
-            this.upButton.Text = "Up";
-            this.upButton.UseVisualStyleBackColor = true;
-            this.upButton.Click += new System.EventHandler(this.upButton_Click);
-            // 
-            // downButton
-            // 
-            this.downButton.Location = new System.Drawing.Point(94, 570);
-            this.downButton.Name = "downButton";
-            this.downButton.Size = new System.Drawing.Size(75, 23);
-            this.downButton.TabIndex = 0;
-            this.downButton.Text = "Bottom";
-            this.downButton.UseVisualStyleBackColor = true;
-            this.downButton.Click += new System.EventHandler(this.downButton_Click);
-            // 
-            // rightButton
-            // 
-            this.rightButton.Location = new System.Drawing.Point(175, 555);
-            this.rightButton.Name = "rightButton";
-            this.rightButton.Size = new System.Drawing.Size(75, 23);
-            this.rightButton.TabIndex = 0;
-            this.rightButton.Text = "Right";
-            this.rightButton.UseVisualStyleBackColor = true;
-            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
             // 
             // label1
             // 
@@ -296,10 +252,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.rightButton);
-            this.Controls.Add(this.downButton);
-            this.Controls.Add(this.upButton);
-            this.Controls.Add(this.leftButton);
             this.Name = "GameForm";
             this.Text = "2048";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
@@ -309,11 +261,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button leftButton;
-        private System.Windows.Forms.Button upButton;
-        private System.Windows.Forms.Button downButton;
-        private System.Windows.Forms.Button rightButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
