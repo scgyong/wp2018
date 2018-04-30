@@ -82,25 +82,48 @@ namespace Game2048 {
             string str = value != 0 ? value.ToString() : "";
             board[y, x].Text = str;
         }
-        private void moveLeft()
+        private bool moveLeft()
         {
+            bool moved = false;
             for (int y = 0; y < 4; y++) {
                 for (int x = 0; x < 4; x++) {
-                    if (get(x, y) > 0) {
-                        continue;
+                    int number = get(x, y);
+                    if (number == 0) {
+                        // 비어있으므로 채워온다.
+                        for (int x2 = x + 1; x2 < 4; x2++) {
+                            number = get(x2, y);
+                            if (number > 0) {
+                                // 숫자를 찾으면 해당 숫자를 x, y 로 가져오고 찾은 곳은 0 으로 만든다.
+                                set(x, y, number);
+                                set(x2, y, 0);
+                                moved = true;
+                                break;
+                            }
+                        }
+
+                        if (number == 0) {
+                            // 끝으로 갔는데도 숫자가 없으면 이 줄은 더 이상 하지 않아도 된다.
+                            break;
+                        }
                     }
                     for (int x2 = x + 1; x2 < 4; x2++) {
-                        if (get(x2, y) > 0) {
-                            System.Diagnostics.Debug.WriteLine(y + ": " + x2 + "->" + x);
-                            set(x, y, get(x2, y));
+                        int n2 = get(x2, y);
+                        if (number == n2) {
+                            // 같은 숫자가 발견되면 2배 값을 적고 발견된 곳은 0 으로 만든다.
+                            int value = 2 * number;
+                            set(x, y, value);
                             set(x2, y, 0);
-                            //board[y, x].Text = board[y, x2].Text;
-                            //board[y, x2].Text = "";
+                            moved = true;
+                            break;
+                        } else if (n2 > 0) {
+                            // 다른 숫자가 발견되었으므로 더 이상 할 일이 없다.
                             break;
                         }
                     }
                 }
             }
+
+            return moved;
         }
         private void moveRight()
         {
@@ -115,8 +138,6 @@ namespace Game2048 {
 
                             set(x, y, get(x2, y));
                             set(x2, y, 0);
-                            //board[y, x].Text = board[y, x2].Text;
-                            //board[y, x2].Text = "";
                             break;
                         }
                     }
