@@ -30,6 +30,8 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.displayLabel = new System.Windows.Forms.Label();
+            this.boldCheck = new System.Windows.Forms.CheckBox();
+            this.ulineCheck = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // radioButton1
@@ -89,11 +91,35 @@
             this.displayLabel.TabIndex = 4;
             this.displayLabel.Text = "label1";
             // 
+            // boldCheck
+            // 
+            this.boldCheck.AutoSize = true;
+            this.boldCheck.Location = new System.Drawing.Point(280, 185);
+            this.boldCheck.Name = "boldCheck";
+            this.boldCheck.Size = new System.Drawing.Size(49, 16);
+            this.boldCheck.TabIndex = 5;
+            this.boldCheck.Text = "Bold";
+            this.boldCheck.UseVisualStyleBackColor = true;
+            this.boldCheck.CheckedChanged += new System.EventHandler(this.boldCheck_CheckedChanged);
+            // 
+            // ulineCheck
+            // 
+            this.ulineCheck.AutoSize = true;
+            this.ulineCheck.Location = new System.Drawing.Point(280, 221);
+            this.ulineCheck.Name = "ulineCheck";
+            this.ulineCheck.Size = new System.Drawing.Size(77, 16);
+            this.ulineCheck.TabIndex = 6;
+            this.ulineCheck.Text = "Underline";
+            this.ulineCheck.UseVisualStyleBackColor = true;
+            this.ulineCheck.CheckedChanged += new System.EventHandler(this.ulineCheck_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 363);
+            this.Controls.Add(this.ulineCheck);
+            this.Controls.Add(this.boldCheck);
             this.Controls.Add(this.displayLabel);
             this.Controls.Add(this.radioButton4);
             this.Controls.Add(this.radioButton3);
@@ -113,6 +139,8 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Label displayLabel;
+        private System.Windows.Forms.CheckBox boldCheck;
+        private System.Windows.Forms.CheckBox ulineCheck;
     }
 }
 
