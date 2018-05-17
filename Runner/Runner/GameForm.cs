@@ -23,8 +23,15 @@ namespace Runner {
         AnimObject player;
         GameObject box;
 
+        DateTime previousTime;
+
         private void timer_Tick(object sender, EventArgs e)
         {
+            var now = DateTime.Now;
+            var elapsed = now - previousTime;
+            previousTime = now;
+            var msec = (int)elapsed.TotalMilliseconds;
+
             bg1Offset -= 8;
             if (bg1Offset < -800) {
                 bg1Offset += 1400;
@@ -37,7 +44,8 @@ namespace Runner {
             if (bg3Offset < -261) {
                 bg3Offset += 261;
             }
-            player.index++;
+            player.updateFrame(msec);
+            //player.index++;
             //playerFrameIndex = (playerFrameIndex + 1) % 40;
             //if (++playerFrameIndex >= 4) {
             //    playerFrameIndex = 0;
@@ -52,10 +60,12 @@ namespace Runner {
             bg1 = Runner.Properties.Resources.game_background01;
             bg2 = Runner.Properties.Resources.game_background02;
             bg3 = Runner.Properties.Resources.game_background03;
-            player = new AnimObject(Runner.Properties.Resources.game_player, 4);
+            player = new AnimObject(Runner.Properties.Resources.game_player, 4, 2.3f);
             player.setPosition(30, 100);
             box = new GameObject(Runner.Properties.Resources.game_box);
             box.setPosition(100, 300);
+
+            previousTime = DateTime.Now;
         }
 
         //int playerFrameIndex = 0;
