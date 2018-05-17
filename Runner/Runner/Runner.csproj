@@ -52,6 +52,7 @@
     <Compile Include="GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameObject.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
