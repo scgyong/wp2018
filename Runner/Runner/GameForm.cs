@@ -19,8 +19,8 @@ namespace Runner {
         Bitmap bg1, bg2, bg3;
         int bg1Offset = 0, bg2Offset = 0, bg3Offset = 0;
 
-        Bitmap playerImage;
-
+        //Bitmap playerImage;
+        AnimObject player;
         GameObject box;
 
         private void timer_Tick(object sender, EventArgs e)
@@ -37,7 +37,8 @@ namespace Runner {
             if (bg3Offset < -261) {
                 bg3Offset += 261;
             }
-            playerFrameIndex = (playerFrameIndex + 1) % 40;
+            player.index++;
+            //playerFrameIndex = (playerFrameIndex + 1) % 40;
             //if (++playerFrameIndex >= 4) {
             //    playerFrameIndex = 0;
             //}
@@ -51,12 +52,13 @@ namespace Runner {
             bg1 = Runner.Properties.Resources.game_background01;
             bg2 = Runner.Properties.Resources.game_background02;
             bg3 = Runner.Properties.Resources.game_background03;
-            playerImage = Runner.Properties.Resources.game_player;
+            player = new AnimObject(Runner.Properties.Resources.game_player, 4);
+            player.setPosition(30, 100);
             box = new GameObject(Runner.Properties.Resources.game_box);
             box.setPosition(100, 300);
         }
 
-        int playerFrameIndex = 0;
+        //int playerFrameIndex = 0;
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(bgImage, 0, 0, 800, 600);
@@ -69,10 +71,11 @@ namespace Runner {
                 e.Graphics.DrawImage(bg3, x, 0, 261, 600);
             }
 
-            Rectangle dest = new Rectangle(0, 0, 156, 222);
-            e.Graphics.DrawImage(playerImage, dest,
-                (playerFrameIndex / 10) * 156, 0, 156, 222,
-                GraphicsUnit.Pixel);
+            player.draw(e.Graphics);
+            //Rectangle dest = new Rectangle(0, 0, 156, 222);
+            //e.Graphics.DrawImage(playerImage, dest,
+            //    (playerFrameIndex / 10) * 156, 0, 156, 222,
+            //    GraphicsUnit.Pixel);
 
             box.draw(e.Graphics);
             //e.Graphics.DrawImage(box.bit, 100, 300, 237, 136);

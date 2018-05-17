@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Runner {
     class GameObject {
-        Bitmap bitmap;
-        RectangleF rect;
+        protected Bitmap bitmap;
+        protected RectangleF rect;
         public GameObject(Bitmap bitmap)
         {
             this.bitmap = bitmap;
@@ -21,7 +21,7 @@ namespace Runner {
             rect.Y = y;
         }
 
-        internal void draw(Graphics g)
+        public virtual void draw(Graphics g)
         {
             g.DrawImage(bitmap, rect);
         }
