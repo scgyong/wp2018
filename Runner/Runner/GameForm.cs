@@ -24,9 +24,11 @@ namespace Runner {
 
         //Bitmap playerImage;
         AnimObject player;
-        GameObject box;
+        //GameObject box;
         AnimObject crocodile;
         AnimObject coin;
+
+        Floor floor = new Floor();
 
         DateTime previousTime;
 
@@ -49,6 +51,8 @@ namespace Runner {
             if (bg3Offset < -261) {
                 bg3Offset += 261;
             }
+
+            floor.update(msec);
             player.updateFrame(msec);
             coin.updateFrame(msec);
             crocodile.updateFrame(msec);
@@ -70,8 +74,6 @@ namespace Runner {
             bg3 = Runner.Properties.Resources.game_background03;
             player = new AnimObject(Runner.Properties.Resources.game_player, 4, 4.0f);
             player.setPosition(30, 100);
-            box = new GameObject(Runner.Properties.Resources.game_box);
-            box.setPosition(100, 300);
             coin = new AnimObject(Runner.Properties.Resources.game_item_coin, 4, 8f);
             coin.setPosition(500, 400);
             crocodile = new AnimObject(Runner.Properties.Resources.game_crocodile, 2, 2.0f);
@@ -91,10 +93,10 @@ namespace Runner {
             }
 
             player.draw(e.Graphics);
-            box.draw(e.Graphics);
+            //box.draw(e.Graphics);
             coin.draw(e.Graphics);
             crocodile.draw(e.Graphics);
-
+            floor.draw(e.Graphics);
             for (int x = bg3Offset; x < 800; x += 261) {
                 e.Graphics.DrawImage(bg3, x, 0, 261, 600);
             }

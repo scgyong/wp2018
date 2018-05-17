@@ -15,6 +15,11 @@ namespace Runner {
             Size size = bitmap.Size;
             rect = new RectangleF(0, 0, size.Width, size.Height);
         }
+        public RectangleF bounds {
+            get {
+                return rect;
+            }
+        }
         public void setPosition(float x, float y)
         {
             rect.X = x;
@@ -24,6 +29,12 @@ namespace Runner {
         public virtual void draw(Graphics g)
         {
             g.DrawImage(bitmap, rect);
+        }
+
+        public void move(int dx, int dy)
+        {
+            rect.X += dx;
+            rect.Y += dy;
         }
     }
 }
