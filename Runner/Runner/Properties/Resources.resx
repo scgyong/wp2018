@@ -130,6 +130,9 @@
   <data name="game_background03" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\game_background03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="game_box" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\game_box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="game_player" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\game_player.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

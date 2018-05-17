@@ -103,6 +103,16 @@ namespace Runner.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap game_box {
+            get {
+                object obj = ResourceManager.GetObject("game_box", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap game_player {
             get {
                 object obj = ResourceManager.GetObject("game_player", resourceCulture);

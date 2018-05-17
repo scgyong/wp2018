@@ -20,6 +20,7 @@ namespace Runner {
         int bg1Offset = 0, bg2Offset = 0, bg3Offset = 0;
 
         Bitmap playerImage;
+        Bitmap boxImage;
 
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -50,6 +51,7 @@ namespace Runner {
             bg2 = Runner.Properties.Resources.game_background02;
             bg3 = Runner.Properties.Resources.game_background03;
             playerImage = Runner.Properties.Resources.game_player;
+            boxImage = Runner.Properties.Resources.game_box;
         }
 
         int playerFrameIndex = 0;
@@ -69,6 +71,8 @@ namespace Runner {
             e.Graphics.DrawImage(playerImage, dest,
                 (playerFrameIndex / 10) * 156, 0, 156, 222,
                 GraphicsUnit.Pixel);
+
+            e.Graphics.DrawImage(boxImage, 100, 300, 237, 136);
         }
 
     }
