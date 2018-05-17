@@ -18,10 +18,15 @@ namespace Runner {
         Bitmap bgImage;
         Bitmap bg1, bg2, bg3;
         int bg1Offset = 0, bg2Offset = 0, bg3Offset = 0;
+        int bg1Speed = 70;
+        int bg2Speed = 150;
+        int bg3Speed = 300;
 
         //Bitmap playerImage;
         AnimObject player;
         GameObject box;
+        AnimObject crocodile;
+        AnimObject coin;
 
         DateTime previousTime;
 
@@ -32,19 +37,22 @@ namespace Runner {
             previousTime = now;
             var msec = (int)elapsed.TotalMilliseconds;
 
-            bg1Offset -= 8;
+            bg1Offset -= bg1Speed * msec / 1000;
             if (bg1Offset < -800) {
                 bg1Offset += 1400;
             }
-            bg2Offset -= 14;
+            bg2Offset -= bg2Speed * msec / 1000;
             if (bg2Offset < -261) {
                 bg2Offset += 261;
             }
-            bg3Offset -= 20;
+            bg3Offset -= bg3Speed * msec / 1000;
             if (bg3Offset < -261) {
                 bg3Offset += 261;
             }
             player.updateFrame(msec);
+            coin.updateFrame(msec);
+            crocodile.updateFrame(msec);
+
             //player.index++;
             //playerFrameIndex = (playerFrameIndex + 1) % 40;
             //if (++playerFrameIndex >= 4) {
@@ -60,10 +68,14 @@ namespace Runner {
             bg1 = Runner.Properties.Resources.game_background01;
             bg2 = Runner.Properties.Resources.game_background02;
             bg3 = Runner.Properties.Resources.game_background03;
-            player = new AnimObject(Runner.Properties.Resources.game_player, 4, 2.3f);
+            player = new AnimObject(Runner.Properties.Resources.game_player, 4, 4.0f);
             player.setPosition(30, 100);
             box = new GameObject(Runner.Properties.Resources.game_box);
             box.setPosition(100, 300);
+            coin = new AnimObject(Runner.Properties.Resources.game_item_coin, 4, 8f);
+            coin.setPosition(500, 400);
+            crocodile = new AnimObject(Runner.Properties.Resources.game_crocodile, 2, 2.0f);
+            crocodile.setPosition(300, 400);
 
             previousTime = DateTime.Now;
         }
@@ -77,18 +89,15 @@ namespace Runner {
             for (int x = bg2Offset; x < 800; x += 261) {
                 e.Graphics.DrawImage(bg2, x, 0, 261, 600);
             }
+
+            player.draw(e.Graphics);
+            box.draw(e.Graphics);
+            coin.draw(e.Graphics);
+            crocodile.draw(e.Graphics);
+
             for (int x = bg3Offset; x < 800; x += 261) {
                 e.Graphics.DrawImage(bg3, x, 0, 261, 600);
             }
-
-            player.draw(e.Graphics);
-            //Rectangle dest = new Rectangle(0, 0, 156, 222);
-            //e.Graphics.DrawImage(playerImage, dest,
-            //    (playerFrameIndex / 10) * 156, 0, 156, 222,
-            //    GraphicsUnit.Pixel);
-
-            box.draw(e.Graphics);
-            //e.Graphics.DrawImage(box.bit, 100, 300, 237, 136);
         }
 
     }
