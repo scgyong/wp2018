@@ -24,7 +24,7 @@ namespace Runner {
 
         //Bitmap playerImage;
         //AnimObject player;
-        Player playerObj;
+        Player player;
         //GameObject box;
         //AnimObject crocodile;
         //AnimObject coin;
@@ -33,7 +33,7 @@ namespace Runner {
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
-            playerObj.handleKeyDownEvent(e.KeyCode);
+            player.handleKeyDownEvent(e.KeyCode);
         }
 
         DateTime previousTime;
@@ -60,7 +60,7 @@ namespace Runner {
 
             floor.update(msec);
             //player.updateFrame(msec);
-            playerObj.updateFrame(msec);
+            player.updateFrame(msec);
             //coin.updateFrame(msec);
             //crocodile.updateFrame(msec);
 
@@ -81,7 +81,7 @@ namespace Runner {
             bg3 = Runner.Properties.Resources.game_background03;
             //player = new AnimObject(Runner.Properties.Resources.game_player, 4, 4.0f);
             //player.setPosition(30, 100);
-            playerObj = new Player();
+            player = new Player();
 
             //coin = new AnimObject(Runner.Properties.Resources.game_item_coin, 4, 8f);
             //coin.setPosition(500, 400);
@@ -105,7 +105,7 @@ namespace Runner {
             //box.draw(e.Graphics);
             //crocodile.draw(e.Graphics);
             floor.draw(e.Graphics);
-            playerObj.draw(e.Graphics);
+            player.draw(e.Graphics);
             //coin.draw(e.Graphics);
 
             for (int x = bg3Offset; x < 800; x += 261) {
