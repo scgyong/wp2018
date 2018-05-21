@@ -12,6 +12,13 @@ namespace Runner {
         List<GameObject> objects = new List<GameObject>();
         public void update(int msec)
         {
+            while (objects.Count > 0) {
+                GameObject first = objects[0];
+                var bounds = first.bounds;
+                if (bounds.Right < 0) {
+                    objects.RemoveAt(0);
+                }
+            }
             float x = 0;
             if (objects.Count > 0) {
                 var bounds = objects[objects.Count - 1].bounds;
