@@ -36,5 +36,6 @@ namespace Runner {
             rect.X += dx;
             rect.Y += dy;
         }
+        public virtual void updateFrame(int msec) { }
     }
 }

@@ -32,7 +32,7 @@ namespace Runner {
             this.millisecondsElapsed = 0;
         }
 
-        public void updateFrame(int msec)
+        public override void updateFrame(int msec)
         {
             millisecondsElapsed += msec;
             var msecPerFrame = 1000 / framesPerSecond;

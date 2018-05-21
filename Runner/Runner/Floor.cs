@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Runner {
     class Floor {
-        const int BOX_Y = 400;
+        const int BOX_Y = 440;
+        const int CROC_Y = 400;
         const int speed = 220;
         List<GameObject> objects = new List<GameObject>();
         public void update(int msec)
@@ -17,6 +18,8 @@ namespace Runner {
                 var bounds = first.bounds;
                 if (bounds.Right < 0) {
                     objects.RemoveAt(0);
+                } else {
+                    break;
                 }
             }
             float x = 0;
@@ -26,14 +29,28 @@ namespace Runner {
             }
 
             if (x < 800) {
-                GameObject box = new GameObject(Runner.Properties.Resources.game_box);
-                box.setPosition(x, BOX_Y);
-                objects.Add(box);
+                appendObject(x);
             }
             int dx = -speed * msec / 1000;
             foreach (var obj in objects) {
                 obj.move(dx, 0);
+                obj.updateFrame(msec);
             }
+        }
+
+        private void appendObject(float x)
+        {
+            GameObject obj;
+            int y;
+            if (new Random().Next(3) == 0) {
+                obj = new AnimObject(Runner.Properties.Resources.game_crocodile, 2, 2.0f);
+                y = CROC_Y;
+            } else {
+                obj = new GameObject(Runner.Properties.Resources.game_box);
+                y = BOX_Y;
+            }
+            obj.setPosition(x, y);
+            objects.Add(obj);
         }
 
         public void draw(Graphics g)
