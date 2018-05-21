@@ -27,7 +27,7 @@ namespace Runner {
         Player playerObj;
         //GameObject box;
         //AnimObject crocodile;
-        AnimObject coin;
+        //AnimObject coin;
 
         Floor floor = new Floor();
 
@@ -61,7 +61,7 @@ namespace Runner {
             floor.update(msec);
             //player.updateFrame(msec);
             playerObj.updateFrame(msec);
-            coin.updateFrame(msec);
+            //coin.updateFrame(msec);
             //crocodile.updateFrame(msec);
 
             //player.index++;
@@ -83,8 +83,8 @@ namespace Runner {
             //player.setPosition(30, 100);
             playerObj = new Player();
 
-            coin = new AnimObject(Runner.Properties.Resources.game_item_coin, 4, 8f);
-            coin.setPosition(500, 400);
+            //coin = new AnimObject(Runner.Properties.Resources.game_item_coin, 4, 8f);
+            //coin.setPosition(500, 400);
             //crocodile = new AnimObject(Runner.Properties.Resources.game_crocodile, 2, 2.0f);
             //crocodile.setPosition(300, 200);
 
@@ -106,7 +106,7 @@ namespace Runner {
             //crocodile.draw(e.Graphics);
             floor.draw(e.Graphics);
             playerObj.draw(e.Graphics);
-            coin.draw(e.Graphics);
+            //coin.draw(e.Graphics);
 
             for (int x = bg3Offset; x < 800; x += 261) {
                 e.Graphics.DrawImage(bg3, x, 0, 261, 600);

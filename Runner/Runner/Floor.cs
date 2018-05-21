@@ -9,6 +9,8 @@ namespace Runner {
     class Floor {
         const int BOX_Y = 440;
         const int CROC_Y = 400;
+        //const int COIN_DX = 
+        const int COIN_Y = 400;
         const int speed = 220;
         List<GameObject> objects = new List<GameObject>();
         public void update(int msec)
@@ -50,6 +52,12 @@ namespace Runner {
                 obj = new GameObject(Runner.Properties.Resources.game_box);
                 obj.sizeDiff = 20;
                 y = BOX_Y;
+                GameObject coin = new AnimObject(Runner.Properties.Resources.game_item_coin, 4, 8f);
+                float dx =
+                    (obj.bounds.Width - obj.sizeDiff) / 2
+                    - coin.bounds.Width / 2;
+                coin.setPosition(x + dx, COIN_Y);
+                objects.Add(coin);
             }
             obj.setPosition(x, y);
             objects.Add(obj);
