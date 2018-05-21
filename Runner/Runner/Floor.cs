@@ -24,8 +24,9 @@ namespace Runner {
             }
             float x = 0;
             if (objects.Count > 0) {
-                var bounds = objects[objects.Count - 1].bounds;
-                x = bounds.Right;
+                var obj = objects[objects.Count - 1];
+                var bounds = obj.bounds;
+                x = bounds.Right - obj.sizeDiff;
             }
 
             if (x < 800) {
@@ -47,6 +48,7 @@ namespace Runner {
                 y = CROC_Y;
             } else {
                 obj = new GameObject(Runner.Properties.Resources.game_box);
+                obj.sizeDiff = 20;
                 y = BOX_Y;
             }
             obj.setPosition(x, y);

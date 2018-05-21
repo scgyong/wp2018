@@ -20,6 +20,7 @@ namespace Runner {
                 return rect;
             }
         }
+        public float sizeDiff = 0.0f;
         public void setPosition(float x, float y)
         {
             rect.X = x;
