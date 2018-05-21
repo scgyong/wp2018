@@ -36,6 +36,7 @@ namespace Runner {
             player.handleKeyDownEvent(e.KeyCode);
         }
 
+        bool active = false;
         DateTime previousTime;
 
         private void timer_Tick(object sender, EventArgs e)
@@ -44,6 +45,10 @@ namespace Runner {
             var elapsed = now - previousTime;
             previousTime = now;
             var msec = (int)elapsed.TotalMilliseconds;
+
+            if (!active) {
+                return;
+            }
 
             bg1Offset -= bg1Speed * msec / 1000;
             if (bg1Offset < -800) {
@@ -61,6 +66,12 @@ namespace Runner {
             floor.update(msec);
             //player.updateFrame(msec);
             player.updateFrame(msec);
+
+            int tag = floor.checkCollision(player);
+            if (tag == Floor.TAG_CROCODILE) {
+                //active = false;
+            }
+
             //coin.updateFrame(msec);
             //crocodile.updateFrame(msec);
 
@@ -89,6 +100,8 @@ namespace Runner {
             //crocodile.setPosition(300, 200);
 
             previousTime = DateTime.Now;
+
+            active = true;
         }
 
         //int playerFrameIndex = 0;

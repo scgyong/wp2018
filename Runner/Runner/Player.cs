@@ -23,6 +23,14 @@ namespace Runner {
             setPosition(INIT_X, INIT_Y);
         }
 
+        public override RectangleF collisionBounds {
+            get {
+                RectangleF rect = this.rect;
+                rect.Inflate(-50, -10);
+                return rect;
+            }
+        }
+
         public override void updateFrame(int msec)
         {
             base.updateFrame(msec);

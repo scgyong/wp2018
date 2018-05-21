@@ -12,6 +12,10 @@ namespace Runner {
         //const int COIN_DX = 
         const int COIN_Y = 400;
         const int speed = 220;
+        public const int TAG_NOTHING = 0;
+        public const int TAG_BOX = 1;
+        public const int TAG_COIN = 2;
+        public const int TAG_CROCODILE = 3;
         List<GameObject> objects = new List<GameObject>();
         public void update(int msec)
         {
@@ -47,12 +51,15 @@ namespace Runner {
             int y;
             if (new Random().Next(3) == 0) {
                 obj = new AnimObject(Runner.Properties.Resources.game_crocodile, 2, 2.0f);
+                obj.tag = TAG_CROCODILE;
                 y = CROC_Y;
             } else {
                 obj = new GameObject(Runner.Properties.Resources.game_box);
+                obj.tag = TAG_BOX;
                 obj.sizeDiff = 20;
                 y = BOX_Y;
                 GameObject coin = new AnimObject(Runner.Properties.Resources.game_item_coin, 4, 8f);
+                coin.tag = TAG_COIN;
                 float dx =
                     (obj.bounds.Width - obj.sizeDiff) / 2
                     - coin.bounds.Width / 2;
@@ -61,6 +68,28 @@ namespace Runner {
             }
             obj.setPosition(x, y);
             objects.Add(obj);
+        }
+
+        public int checkCollision(Player player)
+        {
+            //GameObject removedCoin = null;
+            foreach (GameObject obj in objects) {
+                if (obj.tag == TAG_COIN) {
+                    if (obj.collides(player)) {
+                        //removedCoin = obj;
+                        objects.Remove(obj);
+                        return TAG_COIN;
+                    }
+                } else if (obj.tag == TAG_CROCODILE) {
+                    if (obj.collides(player)) {
+                        return TAG_CROCODILE;
+                    }
+                }
+            }
+            return TAG_NOTHING;
+            //if (removedCoin != null) {
+            //    //playSOUnd();
+            //}
         }
 
         public void draw(Graphics g)

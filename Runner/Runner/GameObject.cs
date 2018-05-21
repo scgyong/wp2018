@@ -21,12 +21,18 @@ namespace Runner {
                 return rect;
             }
         }
+        public virtual RectangleF collisionBounds {
+            get {
+                return rect;
+            }
+        }
         public float sizeDiff = 0.0f;
         public void setPosition(float x, float y)
         {
             rect.X = x;
             rect.Y = y;
         }
+        public int tag = 0;
 
         public virtual void draw(Graphics g)
         {
@@ -37,6 +43,11 @@ namespace Runner {
         {
             rect.X += dx;
             rect.Y += dy;
+        }
+
+        public bool collides(GameObject other)
+        {
+            return this.collisionBounds.IntersectsWith(other.collisionBounds);
         }
 
         public virtual void handleKeyDownEvent(Keys keyCode) { }
