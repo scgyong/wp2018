@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Runner {
     class GameObject {
@@ -37,6 +38,9 @@ namespace Runner {
             rect.X += dx;
             rect.Y += dy;
         }
+
+        public virtual void handleKeyDownEvent(Keys keyCode) { }
+
         public virtual void updateFrame(int msec) { }
     }
 }

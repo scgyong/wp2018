@@ -23,12 +23,18 @@ namespace Runner {
         int bg3Speed = 300;
 
         //Bitmap playerImage;
-        AnimObject player;
+        //AnimObject player;
+        Player playerObj;
         //GameObject box;
         //AnimObject crocodile;
         AnimObject coin;
 
         Floor floor = new Floor();
+
+        private void GameForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            playerObj.handleKeyDownEvent(e.KeyCode);
+        }
 
         DateTime previousTime;
 
@@ -53,7 +59,8 @@ namespace Runner {
             }
 
             floor.update(msec);
-            player.updateFrame(msec);
+            //player.updateFrame(msec);
+            playerObj.updateFrame(msec);
             coin.updateFrame(msec);
             //crocodile.updateFrame(msec);
 
@@ -72,8 +79,10 @@ namespace Runner {
             bg1 = Runner.Properties.Resources.game_background01;
             bg2 = Runner.Properties.Resources.game_background02;
             bg3 = Runner.Properties.Resources.game_background03;
-            player = new AnimObject(Runner.Properties.Resources.game_player, 4, 4.0f);
-            player.setPosition(30, 100);
+            //player = new AnimObject(Runner.Properties.Resources.game_player, 4, 4.0f);
+            //player.setPosition(30, 100);
+            playerObj = new Player();
+
             coin = new AnimObject(Runner.Properties.Resources.game_item_coin, 4, 8f);
             coin.setPosition(500, 400);
             //crocodile = new AnimObject(Runner.Properties.Resources.game_crocodile, 2, 2.0f);
@@ -92,11 +101,13 @@ namespace Runner {
                 e.Graphics.DrawImage(bg2, x, 0, 261, 600);
             }
 
-            player.draw(e.Graphics);
+            //player.draw(e.Graphics);
             //box.draw(e.Graphics);
-            coin.draw(e.Graphics);
             //crocodile.draw(e.Graphics);
             floor.draw(e.Graphics);
+            playerObj.draw(e.Graphics);
+            coin.draw(e.Graphics);
+
             for (int x = bg3Offset; x < 800; x += 261) {
                 e.Graphics.DrawImage(bg3, x, 0, 261, 600);
             }
