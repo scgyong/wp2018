@@ -56,7 +56,9 @@
             this.Text = "Bricks";
             this.Load += new System.EventHandler(this.GameForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameForm_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GameForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameForm_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GameForm_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

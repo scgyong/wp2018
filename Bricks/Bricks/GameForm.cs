@@ -72,5 +72,20 @@ namespace Bricks {
 
             Invalidate();
         }
+
+        Point mouseDownPoint;
+        private void GameForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDownPoint = e.Location;
+        }
+
+        private void GameForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            ball.setPosition(mouseDownPoint.X, mouseDownPoint.Y);
+            ball.setSpeed(
+                e.Location.X - mouseDownPoint.X,
+                e.Location.Y - mouseDownPoint.Y
+                );
+        }
     }
 }
