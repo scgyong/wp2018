@@ -13,12 +13,12 @@ namespace Bricks {
         public GameObject(Bitmap bitmap)
         {
             this.bitmap = bitmap;
-            if (bitmap != null) {
-                Size size = bitmap.Size;
-                rect = new RectangleF(0, 0, size.Width, size.Height);
-            } else {
-                rect = new RectangleF(0, 0, 100, 100);
-            }
+            Size size = bitmap.Size;
+            rect = new RectangleF(0, 0, size.Width, size.Height);
+        }
+        public GameObject(float width, float height) {
+            this.bitmap = null;
+            rect = new RectangleF(0, 0, width, height);
         }
         public RectangleF bounds {
             get {

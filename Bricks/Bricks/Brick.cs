@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bricks {
     class Brick : GameObject {
-        public Brick() : base(null)
+        public Brick(int w = 0, int h = 0) : base(w, h)
         {
         }
 
