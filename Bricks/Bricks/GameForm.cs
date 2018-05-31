@@ -17,6 +17,7 @@ namespace Bricks {
 
         Paddle paddle;
         Ball ball;
+        Brick brick;
 
         public GameForm()
         {
@@ -31,6 +32,9 @@ namespace Bricks {
 
             ball = new Ball();
             ball.setPosition(WIDTH / 2, HEIGHT / 2);
+
+            brick = new Brick();
+            brick.setPosition(WIDTH / 2, HEIGHT / 4);
 
             previousTime = DateTime.Now;
         }
@@ -51,6 +55,7 @@ namespace Bricks {
         {
             paddle.draw(e.Graphics);
             ball.draw(e.Graphics);
+            brick.draw(e.Graphics);
         }
 
         DateTime previousTime;
