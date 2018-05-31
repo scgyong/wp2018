@@ -63,8 +63,12 @@ namespace Bricks {
             return true;
         }
 
-        // for debug
-        internal void setSpeed(int x, int y)
+        internal PointF getSpeed()
+        {
+            return speed;
+        }
+
+        internal void setSpeed(float x, float y)
         {
             speed.X = x;
             speed.Y = y;
