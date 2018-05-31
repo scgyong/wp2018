@@ -10,8 +10,8 @@ using System.Windows.Forms;
 
 namespace Bricks {
     public partial class GameForm : Form {
-        const int WIDTH = 800;
-        const int HEIGHT = 600;
+        public const int WIDTH = 800;
+        public const int HEIGHT = 600;
         const int PADDLE_Y = 550;
         const int PADDLE_W = 100;
 
