@@ -16,6 +16,7 @@ namespace Bricks {
         const int PADDLE_W = 100;
 
         Paddle paddle;
+        Ball ball;
 
         public GameForm()
         {
@@ -27,6 +28,11 @@ namespace Bricks {
             this.ClientSize = new Size(WIDTH, HEIGHT);
             paddle = new Paddle();
             paddle.setPosition(0, PADDLE_Y);
+
+            ball = new Ball();
+            ball.setPosition(WIDTH / 2, HEIGHT / 2);
+
+            previousTime = DateTime.Now;
         }
 
         private void GameForm_MouseMove(object sender, MouseEventArgs e)
@@ -44,10 +50,19 @@ namespace Bricks {
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
             paddle.draw(e.Graphics);
+            ball.draw(e.Graphics);
         }
+
+        DateTime previousTime;
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            var now = DateTime.Now;
+            var elapsed = now - previousTime;
+            previousTime = now;
+            var msec = (int)elapsed.TotalMilliseconds;
+            ball.updateFrame(msec);
+
             Invalidate();
         }
     }
