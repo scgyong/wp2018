@@ -43,5 +43,45 @@ namespace Bricks {
         {
             speed.Y = -speed.Y;
         }
+
+        public bool didBounce(GameObject o)
+        {
+            if (!this.collides(o)) {
+                return false;
+            }
+
+            var mcb = collisionBounds;
+            var ocb = o.collisionBounds;
+
+            var box = ocb;
+            box.Width = ocb.Width / 20;
+            if (mcb.IntersectsWith(box)) {
+                // 왼쪽 사각형에 맞음
+                speed.X = -speed.X;
+                return true;
+            }
+
+            box.X += 19 * box.Width;
+            if (mcb.IntersectsWith(box)) {
+                // 오른쪽 사각형에 맞음
+                speed.X = -speed.X;
+                return true;
+            }
+
+            speed.Y = -speed.Y;
+            //float y = mcb.Y + mcb.Height / 2;
+            //float oy = ocb.Y + ocb.Height / 2;
+
+            ////int y_sign;
+            //if (y > oy) {
+            //    //y_sign = 1;
+            //    speed.Y = -speed.Y
+            //} else {
+            //    //y_sign = -1;
+            //}
+
+
+            return true;
+        }
     }
 }

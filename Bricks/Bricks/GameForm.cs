@@ -68,6 +68,7 @@ namespace Bricks {
             var msec = (int)elapsed.TotalMilliseconds;
             ball.updateFrame(msec);
             stage.checkCollision(ball);
+            ball.didBounce(paddle);
 
             Invalidate();
         }

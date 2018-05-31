@@ -45,8 +45,7 @@ namespace Bricks {
         internal void checkCollision(Ball ball)
         {
             foreach (Brick brick in bricks) {
-                if (brick.collides(ball)) {
-                    ball.bounceY();
+                if (ball.didBounce(brick)) {
                     bricks.Remove(brick);
                     break;
                 }
