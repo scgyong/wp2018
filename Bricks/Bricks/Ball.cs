@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Bricks {
     class Ball : GameObject {
-        const int INITIAL_SPEED_X = 200;
-        const int INITIAL_SPEED_Y = 100;
+        const int INITIAL_SPEED_X = 300;
+        const int INITIAL_SPEED_Y = 200;
         PointF speed;
         public Ball() : base(Properties.Resources.spr_ball_0)
         {
@@ -37,6 +37,11 @@ namespace Bricks {
                 rect.Y = GameForm.HEIGHT;
                 speed.Y = -Math.Abs(speed.Y);
             }
+        }
+
+        internal void bounceY()
+        {
+            speed.Y = -speed.Y;
         }
     }
 }

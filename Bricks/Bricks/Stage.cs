@@ -41,5 +41,16 @@ namespace Bricks {
                 brick.draw(g);
             }
         }
+
+        internal void checkCollision(Ball ball)
+        {
+            foreach (Brick brick in bricks) {
+                if (brick.collides(ball)) {
+                    ball.bounceY();
+                    bricks.Remove(brick);
+                    break;
+                }
+            }
+        }
     }
 }
