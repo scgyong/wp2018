@@ -19,6 +19,7 @@ namespace Bricks {
         Ball ball;
         //Brick brick;
         Stage stage;
+        bool checksPaddle = true;
 
         public GameForm()
         {
@@ -68,7 +69,17 @@ namespace Bricks {
             var msec = (int)elapsed.TotalMilliseconds;
             ball.updateFrame(msec);
             stage.checkCollision(ball);
-            ball.didBounce(paddle);
+            if (checksPaddle) {
+                if (paddle.didBounce(ball)) {
+                    checksPaddle = false;
+                    System.Diagnostics.Debug.Print("ChecksPaddle = false");
+                }
+            } else {
+                if (ball.bounds.Bottom < PADDLE_Y) {
+                    checksPaddle = true;
+                    System.Diagnostics.Debug.Print("ChecksPaddle = true");
+                }
+            }
 
             Invalidate();
         }
