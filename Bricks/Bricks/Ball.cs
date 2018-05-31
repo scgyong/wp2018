@@ -50,12 +50,9 @@ namespace Bricks {
                 return false;
             }
 
-            var mcb = collisionBounds;
-            var ocb = o.collisionBounds;
-
-            float oy = ocb.Y + ocb.Height / 2;
-            if (mcb.Contains(ocb.X, oy) || 
-                mcb.Contains(ocb.Right, oy))
+            var intersection = collisionBounds;
+            intersection.Intersect(o.collisionBounds);
+            if (intersection.Width < intersection.Height)
             {
                 speed.X = -speed.X;
                 return true;
