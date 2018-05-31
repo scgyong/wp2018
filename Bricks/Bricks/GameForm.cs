@@ -81,7 +81,10 @@ namespace Bricks {
 
         private void GameForm_MouseUp(object sender, MouseEventArgs e)
         {
-            ball.setPosition(mouseDownPoint.X, mouseDownPoint.Y);
+            var ballSize = ball.bounds.Size;
+            var x = mouseDownPoint.X - ballSize.Width / 2;
+            var y = mouseDownPoint.Y - ballSize.Height / 2;
+            ball.setPosition(x, y);
             ball.setSpeed(
                 e.Location.X - mouseDownPoint.X,
                 e.Location.Y - mouseDownPoint.Y
