@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimObject.cs" />
+    <Compile Include="Ball.cs" />
+    <Compile Include="Brick.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\paddle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spr_ball_0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
