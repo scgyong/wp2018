@@ -25,7 +25,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.debugLabel = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // debugLabel
@@ -37,6 +39,12 @@
             this.debugLabel.TabIndex = 0;
             this.debugLabel.Text = "Debug";
             // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 30;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -47,6 +55,7 @@
             this.Name = "GameForm";
             this.Text = "Bricks";
             this.Load += new System.EventHandler(this.GameForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameForm_Paint);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameForm_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -56,6 +65,7 @@
         #endregion
 
         private System.Windows.Forms.Label debugLabel;
+        private System.Windows.Forms.Timer timer;
     }
 }
 
