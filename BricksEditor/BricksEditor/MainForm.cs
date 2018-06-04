@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,27 @@ namespace BricksEditor {
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
             stage.draw(e.Graphics);
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = ".txt";
+            var ret = dlg.ShowDialog();
+            if (ret != DialogResult.OK) {
+                return;
+            }
+            StreamWriter writer = new StreamWriter(dlg.FileName);
+            foreach (Brick b in stage.bricks) {
+                string str = "";
+                str += b.bounds.X + ",";
+                str += b.bounds.Y + ",";
+                str += b.bounds.Width + ",";
+                str += b.bounds.Height + ",";
+                str += b.type;
+                writer.WriteLine(str);
+            }
+            writer.Close();
         }
     }
 }
