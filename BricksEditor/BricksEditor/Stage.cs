@@ -22,21 +22,14 @@ namespace BricksEditor {
         public List<Brick> bricks = new List<Brick>();
         private int stageNumber;
 
-        public Stage(int stageNumber)
+        public Stage(int stageNumber) 
+            : this("./stage_0" + stageNumber + ".txt")
+        { }
+
+
+        public Stage(string fileName)
         {
-            //Random r = new Random();
-            //for (int y = 0; y < BRICK_Y_COUNT; y++) {
-            //    for (int x = 0; x < BRICK_X_COUNT; x++) {
-            //        int xx = BRICK_X_OFFSET + x * BRICK_X_INT;
-            //        int yy = BRICK_Y_OFFSET + y * BRICK_Y_INT;
-            //        string t = "" + xx + "," + yy + "," + BRICK_W + "," + BRICK_H + ",";
-            //        int type = r.Next(1, 7);
-            //        t += type;
-            //        System.Diagnostics.Debug.Print(t);
-            //    }
-            //}
             try {
-                string fileName = "./stage_0" + stageNumber + ".txt";
                 StreamReader reader = new StreamReader(fileName);
                 while (!reader.EndOfStream) {
                     string line = reader.ReadLine();

@@ -17,6 +17,8 @@ namespace BricksEditor {
             InitializeComponent();
         }
 
+        private Brick selectedBrick = null;
+
         private int textFieldIntValue(TextBox tb, int def)
         {
             int value;
@@ -43,6 +45,9 @@ namespace BricksEditor {
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
             stage.draw(e.Graphics);
+            if (selectedBrick != null) {
+                e.Graphics.FillRectangle(Brushes.Black, selectedBrick.bounds);
+            }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,6 +69,29 @@ namespace BricksEditor {
                 writer.WriteLine(str);
             }
             writer.Close();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            var ret = dlg.ShowDialog();
+            if (ret != DialogResult.OK) {
+                return;
+            }
+            stage = new Stage(dlg.FileName);
+            Invalidate();
+        }
+
+        private void MainForm_MouseClick(object sender, MouseEventArgs e)
+        {
+            foreach (Brick b in stage.bricks) {
+                if (b.bounds.Contains(e.Location)) {
+                    selectedBrick = b;
+                    Invalidate();
+                    return;
+                }
+            }
+            selectedBrick = null;
         }
     }
 }
