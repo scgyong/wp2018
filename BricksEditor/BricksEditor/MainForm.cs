@@ -172,6 +172,7 @@ namespace BricksEditor {
                 selectedBrick.setPosition(
                     e.Location.X - mouseOffset.X,
                     e.Location.Y - mouseOffset.Y);
+                updateBrickCoordinate();
                 Invalidate();
             }
         }
