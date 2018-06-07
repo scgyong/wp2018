@@ -66,14 +66,16 @@ namespace Bricks {
             }
         }
 
-        internal void checkCollision(Ball ball)
+        public int checkCollision(Ball ball)
         {
             foreach (Brick brick in bricks) {
                 if (ball.didBounce(brick)) {
+                    int score = brick.type * 10;
                     bricks.Remove(brick);
-                    break;
+                    return score;
                 }
             }
+            return 0;
         }
     }
 }

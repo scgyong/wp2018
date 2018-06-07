@@ -68,7 +68,10 @@ namespace Bricks {
             previousTime = now;
             var msec = (int)elapsed.TotalMilliseconds;
             ball.updateFrame(msec);
-            stage.checkCollision(ball);
+            int score = stage.checkCollision(ball);
+            if (score > 0) {
+                addScore(score);
+            }
             if (checksPaddle) {
                 if (paddle.didBounce(ball)) {
                     checksPaddle = false;
@@ -82,6 +85,13 @@ namespace Bricks {
             }
 
             Invalidate();
+        }
+
+        int score;
+        private void addScore(int score)
+        {
+            this.score += score;
+            scoreLabel.Text = this.score.ToString();
         }
 
         Point mouseDownPoint;
