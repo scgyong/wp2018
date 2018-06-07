@@ -15,6 +15,7 @@ namespace BricksEditor {
         public MainForm()
         {
             InitializeComponent();
+            setSelectedBrick(null);
         }
 
         private Brick selectedBrick = null;
@@ -41,6 +42,32 @@ namespace BricksEditor {
 
             Invalidate();
         }
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            if (selectedBrick == null) {
+                return; // early return
+            }
+            int x = textFieldIntValue(xField, 0);
+            int y = textFieldIntValue(yField, 0);
+            int w = textFieldIntValue(wField, 80);
+            int h = textFieldIntValue(hField, 30);
+            int t = textFieldIntValue(tField, 1);
+            selectedBrick.setPosition(x, y);
+            selectedBrick.type = t;
+
+            Invalidate();
+        }
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            if (selectedBrick == null) {
+                return; // early return
+            }
+
+            stage.bricks.Remove(selectedBrick);
+            setSelectedBrick(null);
+            Invalidate();
+        }
 
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
@@ -48,6 +75,13 @@ namespace BricksEditor {
             if (selectedBrick != null) {
                 e.Graphics.FillRectangle(Brushes.Black, selectedBrick.bounds);
             }
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            stage.bricks.Clear();
+            Invalidate();
+            setSelectedBrick(null);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,14 +118,86 @@ namespace BricksEditor {
 
         private void MainForm_MouseClick(object sender, MouseEventArgs e)
         {
+        }
+
+        private void setSelectedBrick(Brick b)
+        {
+            updateButton.Enabled = b != null;
+            removeButton.Enabled = b != null;
+
+            selectedBrick = b;
+            if (b == null) {
+                return;
+            }
+            updateBrickCoordinate();
+        }
+
+        private void updateBrickCoordinate()
+        {
+            var bounds = selectedBrick.bounds;
+            xField.Text = bounds.X.ToString();
+            yField.Text = bounds.Y.ToString();
+            wField.Text = bounds.Width.ToString();
+            hField.Text = bounds.Height.ToString();
+            tField.Text = selectedBrick.type.ToString();
+        }
+
+        bool mouseDownOnBrick = false;
+        PointF mouseOffset;
+        private void MainForm_MouseDown(object sender, MouseEventArgs e)
+        {
             foreach (Brick b in stage.bricks) {
                 if (b.bounds.Contains(e.Location)) {
-                    selectedBrick = b;
+                    setSelectedBrick(b);
+                    mouseDownOnBrick = true;
+                    mouseOffset = new PointF(
+                        e.Location.X - b.bounds.Location.X,
+                        e.Location.Y - b.bounds.Location.Y
+                    );
                     Invalidate();
                     return;
                 }
             }
             selectedBrick = null;
+        }
+
+        private void MainForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDownOnBrick = false;
+        }
+
+        private void MainForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDownOnBrick && selectedBrick != null) {
+                selectedBrick.setPosition(
+                    e.Location.X - mouseOffset.X,
+                    e.Location.Y - mouseOffset.Y);
+                Invalidate();
+            }
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (selectedBrick == null) {
+                return;
+            }
+            switch (e.KeyCode) {
+            case Keys.Up:
+                selectedBrick.move(0, -1);
+                break;
+            case Keys.Down:
+                selectedBrick.move(0, 1);
+                break;
+            case Keys.Left:
+                selectedBrick.move(-1, 0);
+                break;
+            case Keys.Right:
+                selectedBrick.move(1, 0);
+                break;
+            default:
+                return;
+            }
+            updateBrickCoordinate();
         }
     }
 }

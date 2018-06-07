@@ -36,7 +36,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tField = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
-            this.removeButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +44,7 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeButton = new System.Windows.Forms.Button();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,14 +138,15 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // removeButton
+            // updateButton
             // 
-            this.removeButton.Location = new System.Drawing.Point(833, 278);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(100, 23);
-            this.removeButton.TabIndex = 2;
-            this.removeButton.Text = "Remove";
-            this.removeButton.UseVisualStyleBackColor = true;
+            this.updateButton.Location = new System.Drawing.Point(833, 278);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(100, 23);
+            this.updateButton.TabIndex = 2;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // mainMenu
             // 
@@ -173,32 +175,43 @@
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "&New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.openToolStripMenuItem.Text = "&Load";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(133, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeyDisplayString = "Alt+F4";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
+            // 
+            // removeButton
+            // 
+            this.removeButton.Location = new System.Drawing.Point(833, 307);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(100, 23);
+            this.removeButton.TabIndex = 2;
+            this.removeButton.Text = "Remove";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // MainForm
             // 
@@ -206,6 +219,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(945, 565);
             this.Controls.Add(this.removeButton);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.tField);
             this.Controls.Add(this.label5);
@@ -218,11 +232,16 @@
             this.Controls.Add(this.xField);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainMenu);
+            this.DoubleBuffered = true;
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainForm";
             this.Text = "Bricks Stage Editor";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseUp);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -243,7 +262,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tField;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
@@ -251,6 +270,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Button removeButton;
     }
 }
 
