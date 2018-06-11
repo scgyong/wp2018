@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace RhythmSharp {
     class Song {
         public string title;
         public string fileName;
+        public float duration;
         public List<Note> notes;
 
         public Song(string file)
@@ -34,8 +36,28 @@ namespace RhythmSharp {
                     }
                     notes.Add(note);
                 }
+                if (notes.Count > 0) {
+                    duration = (float)(
+                        notes[notes.Count - 1].seconds + 5.0
+                    );
+                }
             } catch (Exception e) {
                 MessageBox.Show(e.Message);
+            }
+        }
+
+        const int NOTE_WIDTH = 80;
+        const int NOTE_HEIGHT = 20;
+        const int PRESS_Y = 500;
+        const int PIXELS_PER_SEC = 100;
+
+        public void draw(Graphics g, int msec)
+        {
+            float time = (float)(msec / 1000.0);
+            foreach (Note note in notes) {
+                int x = note.line * NOTE_WIDTH;
+                int y = (int)(PRESS_Y - PIXELS_PER_SEC * (note.seconds - time));
+                g.FillRectangle(Brushes.White, x, y, NOTE_WIDTH, NOTE_HEIGHT);
             }
         }
     }

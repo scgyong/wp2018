@@ -31,6 +31,7 @@
             // 
             // timer
             // 
+            this.timer.Interval = 30;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // GameForm
