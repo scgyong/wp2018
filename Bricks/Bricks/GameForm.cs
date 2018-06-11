@@ -35,9 +35,21 @@ namespace Bricks {
             ball = new Ball();
             ball.setPosition(WIDTH / 2, HEIGHT / 2);
 
-            stage = new Bricks.Stage(1);
+            stageNumber = 0;
+            proceedToNextStage();
 
             previousTime = DateTime.Now;
+        }
+
+        int stageNumber;
+        private void proceedToNextStage()
+        {
+            stageNumber++;
+            stage = new Bricks.Stage(stageNumber);
+            stageLabel.Text = "Stage: " + stageNumber;
+            ball.setPosition(WIDTH / 2, PADDLE_Y);
+            ball.setSpeed();
+            gameOver = false;
         }
 
         private void GameForm_MouseMove(object sender, MouseEventArgs e)
@@ -68,9 +80,16 @@ namespace Bricks {
             previousTime = now;
             var msec = (int)elapsed.TotalMilliseconds;
             ball.updateFrame(msec);
+            if (!ball.alive) {
+                showGameOver();
+                return;
+            }
             int score = stage.checkCollision(ball);
             if (score > 0) {
                 addScore(score);
+                if (stage.isClear()) {
+                    proceedToNextStage();
+                }
             }
             if (checksPaddle) {
                 if (paddle.didBounce(ball)) {
@@ -87,11 +106,24 @@ namespace Bricks {
             Invalidate();
         }
 
+        public bool gameOver {
+            get {
+                return gameOverLabel.Visible;
+            }
+            set {
+                gameOverLabel.Visible = value;
+            }
+        }
+        private void showGameOver()
+        {
+            gameOver = true;
+        }
+
         int score;
         private void addScore(int score)
         {
             this.score += score;
-            scoreLabel.Text = this.score.ToString();
+            scoreLabel.Text = "Score: " + this.score;
         }
 
         Point mouseDownPoint;
@@ -110,6 +142,12 @@ namespace Bricks {
                 e.Location.X - mouseDownPoint.X,
                 e.Location.Y - mouseDownPoint.Y
                 );
+        }
+
+        private void gameOverLabel_Click(object sender, EventArgs e)
+        {
+            stageNumber = 0;
+            proceedToNextStage();
         }
     }
 }

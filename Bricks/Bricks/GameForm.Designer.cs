@@ -29,12 +29,14 @@
             this.debugLabel = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.scoreLabel = new System.Windows.Forms.Label();
+            this.stageLabel = new System.Windows.Forms.Label();
+            this.gameOverLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // debugLabel
             // 
             this.debugLabel.AutoSize = true;
-            this.debugLabel.Location = new System.Drawing.Point(13, 13);
+            this.debugLabel.Location = new System.Drawing.Point(12, 527);
             this.debugLabel.Name = "debugLabel";
             this.debugLabel.Size = new System.Drawing.Size(41, 12);
             this.debugLabel.TabIndex = 0;
@@ -49,19 +51,48 @@
             // scoreLabel
             // 
             this.scoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.scoreLabel.BackColor = System.Drawing.Color.Transparent;
             this.scoreLabel.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scoreLabel.Location = new System.Drawing.Point(657, 13);
+            this.scoreLabel.Location = new System.Drawing.Point(544, 13);
             this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Size = new System.Drawing.Size(118, 32);
+            this.scoreLabel.Size = new System.Drawing.Size(231, 32);
             this.scoreLabel.TabIndex = 1;
-            this.scoreLabel.Text = "0";
+            this.scoreLabel.Text = "Score: 0";
             this.scoreLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // stageLabel
+            // 
+            this.stageLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.stageLabel.BackColor = System.Drawing.Color.Transparent;
+            this.stageLabel.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stageLabel.ForeColor = System.Drawing.Color.DarkBlue;
+            this.stageLabel.Location = new System.Drawing.Point(12, 9);
+            this.stageLabel.Name = "stageLabel";
+            this.stageLabel.Size = new System.Drawing.Size(224, 32);
+            this.stageLabel.TabIndex = 1;
+            this.stageLabel.Text = "Stage: 1";
+            // 
+            // gameOverLabel
+            // 
+            this.gameOverLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gameOverLabel.BackColor = System.Drawing.Color.Transparent;
+            this.gameOverLabel.Font = new System.Drawing.Font("Verdana", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameOverLabel.ForeColor = System.Drawing.Color.OrangeRed;
+            this.gameOverLabel.Location = new System.Drawing.Point(96, 97);
+            this.gameOverLabel.Name = "gameOverLabel";
+            this.gameOverLabel.Size = new System.Drawing.Size(607, 375);
+            this.gameOverLabel.TabIndex = 1;
+            this.gameOverLabel.Text = "Game\r\nOver";
+            this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gameOverLabel.Click += new System.EventHandler(this.gameOverLabel_Click);
             // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 548);
+            this.Controls.Add(this.gameOverLabel);
+            this.Controls.Add(this.stageLabel);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.debugLabel);
             this.DoubleBuffered = true;
@@ -82,6 +113,8 @@
         private System.Windows.Forms.Label debugLabel;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label scoreLabel;
+        private System.Windows.Forms.Label stageLabel;
+        private System.Windows.Forms.Label gameOverLabel;
     }
 }
 

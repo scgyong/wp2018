@@ -8,17 +8,23 @@ using System.Threading.Tasks;
 namespace Bricks {
     class Ball : GameObject {
         const int INITIAL_SPEED_X = 300;
-        const int INITIAL_SPEED_Y = 200;
+        const int INITIAL_SPEED_Y = -200;
         PointF speed;
+        public bool alive;
         public Ball() : base(Properties.Resources.spr_ball_0)
         {
             speed.X = INITIAL_SPEED_X;
             speed.Y = INITIAL_SPEED_Y;
+            alive = true;
         }
 
         public override void updateFrame(int msec)
         {
             base.updateFrame(msec);
+
+            if (!alive) {
+                return;
+            }
 
             rect.X += speed.X * msec / 1000;
             rect.Y += speed.Y * msec / 1000;
@@ -34,8 +40,9 @@ namespace Bricks {
                 rect.Y = -rect.Y;
                 speed.Y = Math.Abs(speed.Y);
             } else if (rect.Y >= GameForm.HEIGHT) {
-                rect.Y = GameForm.HEIGHT;
-                speed.Y = -Math.Abs(speed.Y);
+                //rect.Y = GameForm.HEIGHT;
+                //speed.Y = -Math.Abs(speed.Y);
+                alive = false;
             }
         }
 
@@ -68,6 +75,10 @@ namespace Bricks {
             return speed;
         }
 
+        internal void setSpeed()
+        {
+            setSpeed(INITIAL_SPEED_X, INITIAL_SPEED_Y);
+        }
         internal void setSpeed(float x, float y)
         {
             speed.X = x;

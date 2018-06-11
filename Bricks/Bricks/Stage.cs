@@ -24,6 +24,7 @@ namespace Bricks {
 
         public Stage(int stageNumber)
         {
+            this.stageNumber = stageNumber;
             //Random r = new Random();
             //for (int y = 0; y < BRICK_Y_COUNT; y++) {
             //    for (int x = 0; x < BRICK_X_COUNT; x++) {
@@ -57,6 +58,11 @@ namespace Bricks {
             } catch (Exception e) {
                 System.Diagnostics.Debug.Print(e.ToString());
             }
+        }
+
+        public bool isClear()
+        {
+            return bricks.Count == 0;
         }
 
         public void draw(Graphics g)
