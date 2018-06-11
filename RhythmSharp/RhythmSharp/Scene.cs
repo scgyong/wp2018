@@ -22,6 +22,7 @@ namespace RhythmSharp {
                 if (_scene != null) {
                     _scene.init();
                 }
+                form.Invalidate();
             }
         }
 
