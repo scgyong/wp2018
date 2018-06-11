@@ -51,9 +51,8 @@ namespace RhythmSharp {
         const int PRESS_Y = 500;
         const int PIXELS_PER_SEC = 100;
 
-        public void draw(Graphics g, int msec)
+        public void draw(Graphics g, double time)
         {
-            float time = (float)(msec / 1000.0);
             foreach (Note note in notes) {
                 int x = note.line * NOTE_WIDTH;
                 int y = (int)(PRESS_Y - PIXELS_PER_SEC * (note.seconds - time));

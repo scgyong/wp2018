@@ -51,9 +51,9 @@ namespace RhythmSharp {
         {
             DateTime now = DateTime.Now;
             var elapsed = now - prevTime;
-            int msec = (int)elapsed.TotalMilliseconds;
+            var seconds = elapsed.TotalSeconds;
             prevTime = now;
-            Scene.currentScene.update(msec);
+            Scene.currentScene.update(seconds);
 
             Invalidate();
         }
