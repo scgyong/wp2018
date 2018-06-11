@@ -46,17 +46,12 @@ namespace RhythmSharp {
             }
         }
 
-        const int NOTE_WIDTH = 80;
-        const int NOTE_HEIGHT = 20;
-        const int PRESS_Y = 500;
-        const int PIXELS_PER_SEC = 100;
-
         public void draw(Graphics g, double time)
         {
             foreach (Note note in notes) {
-                int x = note.line * NOTE_WIDTH;
-                int y = (int)(PRESS_Y - PIXELS_PER_SEC * (note.seconds - time));
-                g.FillRectangle(Brushes.White, x, y, NOTE_WIDTH, NOTE_HEIGHT);
+                int x = Coord.x(note.line);
+                int y = Coord.y(note.seconds - time);
+                g.FillRectangle(Brushes.White, x, y, Coord.NOTE_WIDTH, Coord.NOTE_HEIGHT);
             }
         }
     }

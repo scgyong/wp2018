@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace RhythmSharp {
     public partial class GameForm : Form {
-        public const int WIDTH = 800;
-        public const int HEIGHT = 600;
         public GameForm()
         {
             InitializeComponent();
-            ClientSize = new Size(WIDTH, HEIGHT);
+            ClientSize = new Size(
+                Coord.WINDOW_WIDTH,
+                Coord.WINDOW_HEIGHT);
 
             Scene.form = this;
             Scene.currentScene = new TitleScene();
@@ -28,9 +28,13 @@ namespace RhythmSharp {
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
-            Scene.currentScene.handleKeyEvent(e.KeyCode);
+            Scene.currentScene.handleKeyDown(e.KeyCode);
         }
 
+        private void GameForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            Scene.currentScene.handleKeyUp(e.KeyCode);
+        }
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
             Scene.currentScene.draw(e.Graphics);

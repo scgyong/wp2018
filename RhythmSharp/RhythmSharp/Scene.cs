@@ -30,7 +30,8 @@ namespace RhythmSharp {
         public virtual void close() { }
         public virtual void draw(Graphics g) { }
         public virtual void update(double seconds) { }
-        public virtual void handleKeyEvent(Keys key) { }
+        public virtual void handleKeyDown(Keys key) { }
+        public virtual void handleKeyUp(Keys key) { }
 
         public bool timerEnabled {
             get {

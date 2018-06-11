@@ -17,7 +17,7 @@ namespace RhythmSharp {
         {
             g.FillRectangle(Brushes.Blue, form.ClientRectangle);
         }
-        public override void handleKeyEvent(Keys key)
+        public override void handleKeyDown(Keys key)
         {
             if (key == Keys.Space) {
                 var scene = new GameScene();

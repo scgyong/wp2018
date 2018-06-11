@@ -25,15 +25,46 @@ namespace RhythmSharp {
                 goBackToTitleScene();
             }
         }
+
         public override void draw(Graphics g)
         {
             g.FillRectangle(Brushes.Red, form.ClientRectangle);
+            for (int i = 0; i < 6; i++) {
+                if (presseds[i]) {
+                    int x = Coord.x(i + 1);
+                    g.FillRectangle(Brushes.Orange,
+                        x, 0,
+                        Coord.NOTE_WIDTH, Coord.WINDOW_HEIGHT);
+                }
+            }
+            g.FillRectangle(Brushes.HotPink,
+                0, Coord.y(0.0), Coord.WINDOW_WIDTH, Coord.NOTE_HEIGHT);
             song.draw(g, time);
         }
-        public override void handleKeyEvent(Keys key)
+        private bool[] presseds = new bool [6];
+
+        private static Keys[] keys = new Keys[] {
+            Keys.S, Keys.D, Keys.F,
+            Keys.J, Keys.K, Keys.L,
+        };
+        public override void handleKeyDown(Keys key)
         {
             if (key == Keys.Escape) {
                 goBackToTitleScene();
+            }
+            for (int i = 0; i < 6; i++) {
+                if (key == keys[i]) {
+                    presseds[i] = true;
+                }
+            }
+        }
+        public override void handleKeyUp(Keys key)
+        {
+            base.handleKeyUp(key);
+            for (int i = 0; i < 6; i++) {
+                if (key == keys[i]) {
+                    presseds[i] = false;
+                }
             }
         }
 
