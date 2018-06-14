@@ -30,12 +30,17 @@ namespace RhythmSharp {
         {
             g.FillRectangle(Brushes.Red, form.ClientRectangle);
             for (int i = 0; i < 6; i++) {
+                int x = Coord.x(i + 1);
                 if (presseds[i]) {
-                    int x = Coord.x(i + 1);
                     g.FillRectangle(Brushes.Orange,
-                        x, 0,
+                        (float)x, 0,
                         Coord.NOTE_WIDTH, Coord.WINDOW_HEIGHT);
                 }
+                g.FillRectangle(Brushes.Blue,
+                    (float)(x + Coord.NOTE_WIDTH / 2 - Coord.VLINE_WIDTH / 2),
+                    0,
+                    Coord.VLINE_WIDTH, Coord.WINDOW_HEIGHT
+                );
             }
             g.FillRectangle(Brushes.HotPink,
                 0, Coord.y(0.0), Coord.WINDOW_WIDTH, Coord.NOTE_HEIGHT);
