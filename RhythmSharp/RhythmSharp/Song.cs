@@ -36,6 +36,14 @@ namespace RhythmSharp {
                 StreamReader reader = new StreamReader(file);
                 while (!reader.EndOfStream) {
                     string line = reader.ReadLine();
+                    if (line.StartsWith("#")) {
+                        title = line.Substring(1);
+                        continue;
+                    }
+                    if (line.StartsWith("@")) {
+                        fileName = line.Substring(1);
+                        continue;
+                    }
                     string[] arr = line.Split(null);
                     if (arr.Length < 3) {
                         continue;
