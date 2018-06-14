@@ -9,13 +9,20 @@ using System.Windows.Forms;
 namespace RhythmSharp {
     class GameScene: Scene {
         internal Song song;
-        double time = 0;
+        double time;
+        int score;
+        Font scoreFont;
         public override void init()
         {
             base.init();
             timerEnabled = true;
             time = 0;
+            score = 0;
             song.init();
+            scoreFont = new Font(
+                SystemFonts.CaptionFont.FontFamily,
+                20, 
+                FontStyle.Bold | FontStyle.Italic);
         }
         public override void update(double seconds)
         {
@@ -46,6 +53,9 @@ namespace RhythmSharp {
             g.FillRectangle(Brushes.HotPink,
                 0, Coord.y(0.0), Coord.WINDOW_WIDTH, Coord.NOTE_HEIGHT);
             song.draw(g, time);
+            g.DrawString("Score: " + score,
+                scoreFont,
+                Brushes.Wheat, 500, 200);
         }
         private bool[] presseds = new bool [6];
 
