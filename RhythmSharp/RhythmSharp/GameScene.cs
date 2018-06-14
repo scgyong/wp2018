@@ -12,6 +12,9 @@ namespace RhythmSharp {
         double time;
         int score;
         Font scoreFont;
+        Font judgeFont;
+        Song.Judge recentJudge;
+        double judgeDisapearTime;
         public override void init()
         {
             base.init();
@@ -21,8 +24,14 @@ namespace RhythmSharp {
             song.init();
             scoreFont = new Font(
                 SystemFonts.CaptionFont.FontFamily,
-                20, 
+                40, 
                 FontStyle.Bold | FontStyle.Italic);
+            judgeFont = new Font(
+                SystemFonts.DefaultFont.FontFamily,
+                50,
+                FontStyle.Bold);
+            recentJudge = Song.Judge.NOTHING;
+            judgeDisapearTime = 0;
         }
         public override void update(double seconds)
         {
@@ -32,6 +41,21 @@ namespace RhythmSharp {
             if (time > song.duration) {
                 goBackToTitleScene();
             }
+
+            bool missed = song.checkMissedNotes(time);
+            if (missed) {
+                setJudge(Song.Judge.MISSED);
+            }
+
+            if (judgeDisapearTime > 0 && time > judgeDisapearTime) {
+                setJudge(Song.Judge.NOTHING);
+            }
+        }
+
+        private void setJudge(Song.Judge judge)
+        {
+            recentJudge = judge;
+            judgeDisapearTime = time + 1.0;
         }
 
         public override void draw(Graphics g)
@@ -56,6 +80,12 @@ namespace RhythmSharp {
             g.DrawString("Score: " + score,
                 scoreFont,
                 Brushes.Wheat, 500, 200);
+            if (recentJudge != Song.Judge.NOTHING) {
+                g.DrawString(recentJudge.ToString(),
+                    judgeFont,
+                    Brushes.Black,
+                    100, 200);
+            }
         }
         private bool[] presseds = new bool [6];
 
@@ -76,9 +106,33 @@ namespace RhythmSharp {
                 }
             }
             if (line > 0) {
-                song.handleInput(line, time);
+                var judge = song.handleInput(line, time);
+                switch (judge) {
+                case Song.Judge.PERFECT:
+                    addScore(200);
+                    break;
+                case Song.Judge.GOOD:
+                    addScore(100);
+                    break;
+                case Song.Judge.BAD:
+                    addScore(50);
+                    break;
+                case Song.Judge.NOTHING:
+                    addScore(-1);
+                    return;
+                }
+                setJudge(judge);
             }
         }
+
+        private void addScore(int score)
+        {
+            this.score += score;
+            if (this.score < 0) {
+                this.score = 0;
+            }
+        }
+
         public override void handleKeyUp(Keys key)
         {
             base.handleKeyUp(key);

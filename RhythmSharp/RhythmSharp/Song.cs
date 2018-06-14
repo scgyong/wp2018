@@ -15,7 +15,7 @@ namespace RhythmSharp {
         public List<Note> notes;
 
         public enum Judge {
-            NOTHING, BAD, GOOD, PERFECT
+            NOTHING, MISSED, BAD, GOOD, PERFECT
         }
         public const double THRESHOULD_PERFECT = 0.01;
         public const double THRESHOULD_GOOD    = 0.05;
@@ -25,6 +25,7 @@ namespace RhythmSharp {
         {
             foreach (Note note in notes) {
                 note.valid = true;
+                note.shows = true;
             }
         }
 
@@ -60,10 +61,24 @@ namespace RhythmSharp {
             }
         }
 
-        public void draw(Graphics g, double time)
+        internal bool checkMissedNotes(double seconds)
         {
             foreach (Note note in notes) {
                 if (!note.valid) {
+                    continue;
+                }
+                if (note.seconds + THRESHOULD_BAD < seconds) {
+                    note.valid = false;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void draw(Graphics g, double time)
+        {
+            foreach (Note note in notes) {
+                if (!note.shows) {
                     continue;
                 }
                 int x = Coord.x(note.line);
@@ -86,14 +101,16 @@ namespace RhythmSharp {
                 Judge judge = Judge.NOTHING;
                 if (diff <= THRESHOULD_PERFECT) {
                     judge = Judge.PERFECT;
+                    note.shows = false;
                 } else if (diff <= THRESHOULD_GOOD) {
                     judge = Judge.GOOD;
+                    note.shows = false;
                 } else if (diff <= THRESHOULD_BAD) {
                     judge = Judge.BAD;
                 } else {
                     continue;
                 }
-                System.Diagnostics.Debug.Print(judge + " Diff = " + diff);
+                //System.Diagnostics.Debug.Print(judge + " Diff = " + diff);
                 note.valid = false;
                 return judge;
             }
