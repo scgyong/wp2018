@@ -11,6 +11,7 @@ namespace RhythmSharp {
         };
         public Type type;
         public int line; // 1=s,2=d,3=f,4=j,5=k,6=l
-        public float seconds; 
+        public float seconds;
+        public bool valid;
     }
 }

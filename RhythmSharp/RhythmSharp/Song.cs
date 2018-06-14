@@ -14,6 +14,20 @@ namespace RhythmSharp {
         public float duration;
         public List<Note> notes;
 
+        public enum Judge {
+            NOTHING, BAD, GOOD, PERFECT
+        }
+        public const double THRESHOULD_PERFECT = 0.01;
+        public const double THRESHOULD_GOOD    = 0.05;
+        public const double THRESHOULD_BAD     = 0.1;
+
+        public void init()
+        {
+            foreach (Note note in notes) {
+                note.valid = true;
+            }
+        }
+
         public Song(string file)
         {
             notes = new List<Note>();
@@ -49,10 +63,41 @@ namespace RhythmSharp {
         public void draw(Graphics g, double time)
         {
             foreach (Note note in notes) {
+                if (!note.valid) {
+                    continue;
+                }
                 int x = Coord.x(note.line);
                 int y = Coord.y(note.seconds - time);
                 g.FillRectangle(Brushes.White, x, y, Coord.NOTE_WIDTH, Coord.NOTE_HEIGHT);
             }
+        }
+
+        public Judge handleInput(int line, double time)
+        {
+            foreach (Note note in notes) {
+                if (note.line != line) {
+                    continue;
+                }
+                if (!note.valid) {
+                    continue;
+                }
+                double diff = Math.Abs(note.seconds - time);
+                //System.Diagnostics.Debug.Print("Diff = " + diff);
+                Judge judge = Judge.NOTHING;
+                if (diff <= THRESHOULD_PERFECT) {
+                    judge = Judge.PERFECT;
+                } else if (diff <= THRESHOULD_GOOD) {
+                    judge = Judge.GOOD;
+                } else if (diff <= THRESHOULD_BAD) {
+                    judge = Judge.BAD;
+                } else {
+                    continue;
+                }
+                System.Diagnostics.Debug.Print(judge + " Diff = " + diff);
+                note.valid = false;
+                return judge;
+            }
+            return Judge.NOTHING;
         }
     }
 }

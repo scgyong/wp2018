@@ -15,6 +15,7 @@ namespace RhythmSharp {
             base.init();
             timerEnabled = true;
             time = 0;
+            song.init();
         }
         public override void update(double seconds)
         {
@@ -57,10 +58,15 @@ namespace RhythmSharp {
             if (key == Keys.Escape) {
                 goBackToTitleScene();
             }
+            int line = 0;
             for (int i = 0; i < 6; i++) {
                 if (key == keys[i]) {
                     presseds[i] = true;
+                    line = i + 1;
                 }
+            }
+            if (line > 0) {
+                song.handleInput(line, time);
             }
         }
         public override void handleKeyUp(Keys key)
